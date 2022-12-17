@@ -1,0 +1,15 @@
+from marshmallow import Schema, fields
+from app.setup_db import db
+
+
+class Director(db.Model):
+    """ Модель БД director """
+    __tablename__ = 'director'
+    id = db.Column(db.Integer, primary_key=True)
+    name = db.Column(db.String(255))
+
+
+class DirectorSchema(Schema):
+    """ CBV БД director """
+    id = fields.Int(dump_only=True)
+    name = fields.Str()
